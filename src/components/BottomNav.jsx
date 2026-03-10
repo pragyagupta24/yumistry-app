@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Search, ShoppingBag, Package, User, Heart } from 'lucide-react';
+import { Home, Search, Tag, Package, User } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -10,7 +10,7 @@ const BottomNav = () => {
   const navItems = [
     { icon: Home, label: 'Home', path: '/home' },
     { icon: Search, label: 'Search', path: '/search' },
-    { icon: Heart, label: 'Wishlist', path: '/wishlist' },
+    { icon: Tag, label: 'Offers', path: '/offers' },
     { icon: Package, label: 'Orders', path: '/orders' },
     { icon: User, label: 'Account', path: '/account' },
   ];

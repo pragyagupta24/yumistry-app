@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, Lock, Leaf, Eye, EyeOff, Mail } from 'lucide-react';
+import { Phone, Lock, Leaf, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phone: '',
-    email: '',
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -29,12 +28,6 @@ const Login = () => {
       newErrors.phone = 'Enter valid 10-digit number';
     }
     
-    if (!formData.email) {
-      newErrors.email = 'Email required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Enter valid email';
-    }
-    
     if (!formData.password) {
       newErrors.password = 'Password required';
     } else if (formData.password.length < 6) {
@@ -51,12 +44,11 @@ const Login = () => {
     // Simulate API call
     setTimeout(() => {
       // Demo account
-      if (formData.phone === '9876543210' && formData.email === 'demo@yumistry.com' && formData.password === 'demo123') {
+      if (formData.phone === '9876543210' && formData.password === 'demo123') {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userData', JSON.stringify({
           name: 'Demo User',
           phone: '9876543210',
-          email: 'demo@yumistry.com',
           password: 'demo123'
         }));
         navigate('/home');
@@ -69,7 +61,7 @@ const Login = () => {
         const user = JSON.parse(userData);
         
         // Verify credentials
-        if (user.phone === formData.phone && user.email === formData.email && user.password === formData.password) {
+        if (user.phone === formData.phone && user.password === formData.password) {
           localStorage.setItem('isLoggedIn', 'true');
           navigate('/home');
         } else {
@@ -150,26 +142,6 @@ const Login = () => {
             {errors.phone && <p className="text-red-500 text-xs mt-1.5 ml-1">{errors.phone}</p>}
           </div>
 
-          {/* Email Input */}
-          <div>
-            <label className="block text-sm font-semibold text-fresh-green/70 mb-2">Email Address</label>
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-fresh-green/40" size={20} />
-              <input 
-                type="email" 
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter your email" 
-                disabled={isLoading}
-                className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-white border-2 outline-none transition-all placeholder:text-fresh-green/30 font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed ${
-                  errors.email ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-leaf'
-                }`}
-              />
-            </div>
-            {errors.email && <p className="text-red-500 text-xs mt-1.5 ml-1">{errors.email}</p>}
-          </div>
-
           {/* Password Input */}
           <div>
             <label className="block text-sm font-semibold text-fresh-green/70 mb-2">Password</label>
@@ -200,7 +172,11 @@ const Login = () => {
 
           {/* Forgot Password */}
           <div className="flex justify-end">
-            <button type="button" className="text-sm font-bold text-leaf hover:text-fresh-green transition-colors">
+            <button 
+              type="button" 
+              onClick={() => navigate('/forgot-password')}
+              className="text-sm font-bold text-leaf hover:text-fresh-green transition-colors"
+            >
               Forgot Password?
             </button>
           </div>
@@ -249,7 +225,7 @@ const Login = () => {
           {/* Demo Info */}
           <div className="mt-6 p-3 bg-leaf/5 rounded-lg border border-leaf/20">
             <p className="text-xs text-center text-fresh-green/60 font-medium">
-              Demo: 9876543210 • demo@yumistry.com • demo123
+              Demo: 9876543210 • demo123
             </p>
           </div>
         </form>

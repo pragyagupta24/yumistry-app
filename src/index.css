@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-fresh-green: #2D5A27;  /* Deep Forest Green */
-  --color-leaf: #84cc16;         /* Bright Lime Green */
-  --color-organic: #f0fdf4;      /* Super Light Mint Background */
-  --color-earth: #78350f;        /* Rich Soil Brown */
-  --color-sun: #facc15;          /* Fresh Lemon Yellow */
+  --color-primary: #8B60ED;      /* Zepto Purple */
+  --color-secondary: #6C3FD6;    /* Deep Purple */
+  --color-accent: #A78BFA;       /* Light Purple */
+  --color-fresh-green: #10B981;  /* Emerald */
+  --color-leaf: #8B60ED;         /* Purple */
+  --color-organic: #FFFFFF;      /* White */
+  --color-earth: #5B21B6;        /* Dark Purple */
+  --color-sun: #A78BFA;          /* Light Purple */
 }
 
 @layer base {
   body {
-    @apply bg-organic text-fresh-green antialiased;
+    @apply antialiased;
     font-family: 'Quicksand', sans-serif;
+    background: #FFFFFF;
   }
 }

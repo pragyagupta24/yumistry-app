@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, Phone, Mail, MapPin, Leaf, Lock, Eye, EyeOff } from 'lucide-react';
+import { User, Phone, Leaf, Lock, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Register = () => {
@@ -8,9 +8,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
-    password: '',
-    address: ''
+    password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
@@ -33,21 +31,10 @@ const Register = () => {
       newErrors.phone = 'Enter valid 10-digit number';
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email) {
-      newErrors.email = 'Email required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Enter valid email';
-    }
-
     if (!formData.password) {
       newErrors.password = 'Password required';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Min 6 characters';
-    }
-
-    if (!formData.address || formData.address.length < 10) {
-      newErrors.address = 'Enter complete address';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -145,26 +132,6 @@ const Register = () => {
             {errors.phone && <p className="text-red-500 text-xs mt-1.5 ml-1">{errors.phone}</p>}
           </div>
 
-          {/* Email Input */}
-          <div>
-            <label className="block text-sm font-semibold text-fresh-green/70 mb-2">Email Address</label>
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-fresh-green/40" size={20} />
-              <input 
-                type="email" 
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter your email"
-                disabled={isLoading}
-                className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-white border-2 outline-none transition-all placeholder:text-fresh-green/30 font-medium text-sm disabled:opacity-50 ${
-                  errors.email ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-leaf'
-                }`}
-              />
-            </div>
-            {errors.email && <p className="text-red-500 text-xs mt-1.5 ml-1">{errors.email}</p>}
-          </div>
-
           {/* Password Input */}
           <div>
             <label className="block text-sm font-semibold text-fresh-green/70 mb-2">Password</label>
@@ -191,26 +158,6 @@ const Register = () => {
               </button>
             </div>
             {errors.password && <p className="text-red-500 text-xs mt-1.5 ml-1">{errors.password}</p>}
-          </div>
-
-          {/* Address Input */}
-          <div>
-            <label className="block text-sm font-semibold text-fresh-green/70 mb-2">Delivery Address</label>
-            <div className="relative">
-              <MapPin className="absolute left-4 top-4 text-fresh-green/40" size={20} />
-              <textarea 
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                placeholder="Enter complete delivery address"
-                disabled={isLoading}
-                rows="2"
-                className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-white border-2 outline-none transition-all placeholder:text-fresh-green/30 font-medium text-sm resize-none disabled:opacity-50 ${
-                  errors.address ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-leaf'
-                }`}
-              />
-            </div>
-            {errors.address && <p className="text-red-500 text-xs mt-1.5 ml-1">{errors.address}</p>}
           </div>
 
           {/* Submit Button */}
