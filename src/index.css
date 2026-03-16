@@ -1,29 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7f1d1d;
+  --color-secondary: #f52d05;
+  --color-accent: #ff6b9d;
+  --color-fresh-green: #7f1d1d;
+  --color-leaf: #f52d05;
+  --color-organic: #fff5f7;
+  --color-earth: #8b5a2b;
+  --color-sun: #ff6b9d;
+  --color-background: #fff5f7;
+  --color-text: #1a1a1a;
+  --font-sans: 'Quicksand', ui-sans-serif, system-ui;
+}
 
 @layer base {
-  :root {
-    --color-primary: #16a34a;      /* Fresh Green */
-    --color-secondary: #84cc16;    /* Leaf Green */
-    --color-accent: #22c55e;       /* Green Accent */
-    --color-fresh-green: #16a34a;  /* Fresh Green */
-    --color-leaf: #84cc16;         /* Leaf Green */
-    --color-organic: #f0fdf4;      /* Light Green Background */
-    --color-earth: #8b5a2b;        /* Earth Brown */
-    --color-sun: #fbbf24;          /* Sun Yellow */
-    --color-background: #f0fdf4;   /* Background */
-    --color-text: #1a1a1a;         /* Text */
-    --color-terracotta: #d2691e;   /* Terracotta */
-  }
-
   body {
     @apply antialiased;
     font-family: 'Quicksand', sans-serif;
     color: #1a1a1a;
   }
 
-  /* Scrollbar Hide */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

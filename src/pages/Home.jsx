@@ -93,17 +93,17 @@ const Home = () => {
 
   return (
     <div className={`min-h-screen pb-20 relative overflow-hidden transition-colors ${
-      darkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-[#fff5f7] via-white to-[#ffe5ec]'
+      darkMode ? 'bg-gray-900' : 'bg-linear-to-br from-[#fff5f7] via-white to-[#ffe5ec]'
     }`}>
       <motion.div
         animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 12, repeat: Infinity }}
-        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#7f1d1d]/20 to-[#f52d05]/10 rounded-full blur-3xl"
+        className="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-[#7f1d1d]/20 to-[#f52d05]/10 rounded-full blur-3xl"
       />
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
         transition={{ duration: 15, repeat: Infinity }}
-        className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tl from-[#ff6b9d]/20 to-[#7f1d1d]/10 rounded-full blur-3xl"
+        className="absolute bottom-0 left-0 w-80 h-80 bg-linear-to-tl from-[#ff6b9d]/20 to-[#7f1d1d]/10 rounded-full blur-3xl"
       />
 
       <HomeHeader selectedLocation={selectedLocation} onLocationClick={() => setShowLocationModal(true)} />
